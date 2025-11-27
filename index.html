@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xtreme Capabilities - للمساحة ونظم المعلومات الجغرافية</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        blue: {
+                            50: '#fff8ed',
+                            100: '#ffefd6',
+                            200: '#fed7aa',
+                            300: '#fdba74',
+                            400: '#fb923c',
+                            500: '#f97316',
+                            600: '#f49119', // Primary Orange
+                            700: '#d67e12', // Darker Orange for hover
+                            800: '#9a3412',
+                            900: '#1f2937', // Dark Gray (replacing Navy Blue)
+                        },
+                        gray: {
+                            50: '#f9fafb',
+                            100: '#f3f4f6',
+                            200: '#e5e7eb',
+                            300: '#d1d5db',
+                            400: '#aaa9ae', // The requested Gray
+                            500: '#9ca3af',
+                            600: '#4b5563',
+                            700: '#374151',
+                            800: '#1f2937',
+                            900: '#111827',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts (Cairo) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="font-cairo text-gray-900 dark:text-white bg-white dark:bg-gray-950 overflow-x-hidden transition-colors duration-300">
+
+    <!-- Header -->
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <a href="#" class="flex items-center gap-2 font-bold text-2xl text-blue-900 dark:text-white">
+                <img src="logo.png" alt="Xtreme Capabilities" class="h-12 w-auto object-contain">
+                <span>Xtreme Capabilities</span>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="#hero" class="nav-link text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-500 font-medium transition-colors relative group">الرئيسية</a>
+                <a href="#about" class="nav-link text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-500 font-medium transition-colors relative group">عن الشركة</a>
+                <a href="#services" class="nav-link text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-500 font-medium transition-colors relative group">خدماتنا</a>
+                <a href="#projects" class="nav-link text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-500 font-medium transition-colors relative group">المشاريع</a>
+                <a href="#testimonials" class="nav-link text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-500 font-medium transition-colors relative group">آراء العملاء</a>
+                <a href="#contact" class="nav-link text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-500 font-medium transition-colors relative group">تواصل معنا</a>
+                
+                <!-- Dark Mode Toggle -->
+                <button id="theme-toggle" class="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-yellow-400 transition-colors hover:bg-gray-200 dark:hover:bg-gray-700">
+                    <i data-lucide="moon" class="w-5 h-5"></i>
+                </button>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <div class="flex items-center gap-4 md:hidden">
+                <button id="theme-toggle-mobile" class="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-yellow-400 transition-colors">
+                    <i data-lucide="moon" class="w-5 h-5"></i>
+                </button>
+                <button id="menu-btn" class="text-gray-700 dark:text-white p-2">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Nav -->
+        <div id="mobile-menu" class="hidden absolute top-full left-0 right-0 bg-white dark:bg-gray-900 shadow-lg overflow-hidden md:hidden transition-all duration-300 border-t dark:border-gray-800">
+            <div class="flex flex-col p-4 gap-4">
+                <a href="#hero" class="mobile-link text-gray-700 dark:text-gray-300 hover:text-blue-600 font-medium p-2 border-b border-gray-100 dark:border-gray-800">الرئيسية</a>
+                <a href="#about" class="mobile-link text-gray-700 dark:text-gray-300 hover:text-blue-600 font-medium p-2 border-b border-gray-100 dark:border-gray-800">عن الشركة</a>
+                <a href="#services" class="mobile-link text-gray-700 dark:text-gray-300 hover:text-blue-600 font-medium p-2 border-b border-gray-100 dark:border-gray-800">خدماتنا</a>
+                <a href="#projects" class="mobile-link text-gray-700 dark:text-gray-300 hover:text-blue-600 font-medium p-2 border-b border-gray-100 dark:border-gray-800">المشاريع</a>
+                <a href="#testimonials" class="mobile-link text-gray-700 dark:text-gray-300 hover:text-blue-600 font-medium p-2 border-b border-gray-100 dark:border-gray-800">آراء العملاء</a>
+                <a href="#contact" class="mobile-link text-gray-700 dark:text-gray-300 hover:text-blue-600 font-medium p-2">تواصل معنا</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="1.jpg" alt="Xtreme Capabilities Surveying" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70"></div>
+        </div>
+
+        <div class="container mx-auto px-4 relative z-10 text-center text-white">
+            <div class="reveal fade-up delay-200">
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+                    <span class="text-blue-400">Xtreme</span> Capabilities
+                    <br>
+                    <span class="text-2xl md:text-4xl font-light mt-2 block">For Engineering</span>
+                </h1>
+            </div>
+
+            <p class="reveal fade-up delay-400 text-lg md:text-2xl text-gray-200 max-w-3xl mx-auto mb-10 leading-relaxed">
+                هندسة بلا حدود و إمكانيات بلا توقف
+            </p>
+
+            <div class="reveal fade-up delay-600 flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#projects" class="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-bold text-lg transition-all transform hover:scale-105 shadow-lg hover:shadow-blue-500/30">
+                    استكشف مشاريعنا
+                </a>
+                <a href="#contact" class="px-8 py-4 bg-transparent border-2 border-white hover:bg-white hover:text-blue-900 text-white rounded-full font-bold text-lg transition-all transform hover:scale-105">
+                    تواصل معنا
+                </a>
+            </div>
+        </div>
+
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 animate-bounce">
+            <a href="#about" class="text-white/70 hover:text-white transition-colors">
+                <i data-lucide="arrow-down" class="w-8 h-8"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-50 dark:bg-gray-900 overflow-hidden">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row gap-12 items-center">
+                <!-- Text Content -->
+                <div class="lg:w-1/2 reveal fade-right">
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="w-12 h-1 bg-blue-600 rounded-full"></span>
+                        <span class="text-blue-600 font-bold uppercase tracking-wider">من نحن</span>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
+                        Xtreme Capabilities الهندسية
+                    </h2>
+                    <p class="text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-6 text-justify">
+                        شركة متخصصة في توفير حلول المساحة الأرضية ونظم المعلومات الجغرافية (GIS) المتكاملة، وتخدم قطاعاً واسعاً من الوزارات، الجهات الحكومية، المنظمات، الشركات الكبرى، والأفراد في جميع ولايات السودان.
+                    </p>
+                    <p class="text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-8 text-justify">
+                        تأسست شركتنا على مبدأ الدقة المطلقة والموثوقية الهندسية. نحن نوظف أحدث أجهزة المسح الأرضي المعتمدة ونُدمجها مع تقنيات GIS المتقدمة، لتقديم بيانات مكانية دقيقة يمكن الاعتماد عليها في مراحل التخطيط، التصميم، والتنفيذ لمشاريع البنية التحتية والتنمية المختلفة.
+                    </p>
+
+                    <!-- Vision Box -->
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg border-r-4 border-blue-600 relative overflow-hidden group hover:shadow-xl transition-shadow">
+                        <div class="absolute top-0 left-0 w-24 h-24 bg-blue-50 dark:bg-blue-900/20 rounded-br-full -z-0 transition-transform group-hover:scale-150 duration-500"></div>
+                        <div class="relative z-10">
+                            <div class="flex items-center gap-3 mb-3">
+                                <i data-lucide="target" class="w-6 h-6 text-blue-600"></i>
+                                <h3 class="text-xl font-bold text-gray-900 dark:text-white">رؤيتنا</h3>
+                            </div>
+                            <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                                أن نكون الشريك الموثوق والرائد في تقديم حلول البيانات المكانية الذكية والمتقدمة التي تدعم التنمية المستدامة والنهوض بالقطاع الهندسي في جميع أنحاء السودان.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Features -->
+                <div class="lg:w-1/2 w-full reveal fade-left">
+                    <div class="grid grid-cols-1 gap-6">
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 flex items-start gap-4 hover:-translate-y-1">
+                            <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg shrink-0">
+                                <i data-lucide="compass" class="w-10 h-10 text-blue-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-2">دقة متناهية</h4>
+                                <p class="text-gray-600 dark:text-gray-300">نستخدم أحدث أجهزة المسح لضمان أعلى درجات الدقة في البيانات المكانية.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 flex items-start gap-4 hover:-translate-y-1">
+                            <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg shrink-0">
+                                <i data-lucide="layers" class="w-10 h-10 text-blue-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-2">تقنيات متكاملة</h4>
+                                <p class="text-gray-600 dark:text-gray-300">دمج المسح الأرضي مع نظم المعلومات الجغرافية (GIS) لحلول شاملة.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 flex items-start gap-4 hover:-translate-y-1">
+                            <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg shrink-0">
+                                <i data-lucide="check-circle" class="w-10 h-10 text-blue-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-2">موثوقية هندسية</h4>
+                                <p class="text-gray-600 dark:text-gray-300">فريق من الخبراء والمتخصصين لضمان جودة وموثوقية المخرجات.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Strategic Pillars (Mission, Values, Goals) -->
+            <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Mission -->
+                <div class="reveal fade-up delay-100 bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg border-t-4 border-blue-600 hover:shadow-xl transition-all duration-300 group">
+                    <div class="w-14 h-14 bg-blue-50 dark:bg-blue-900/20 rounded-full flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-colors">
+                        <i data-lucide="flag" class="w-7 h-7 text-blue-600 group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">الرسالة</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                        تزويد عملائنا بأدق البيانات المكانية وخدمات GIS المبتكرة والموثوقة، من خلال فريق عمل هندسي متخصص والالتزام بأعلى معايير الجودة العالمية والمحلية.
+                    </p>
+                </div>
+
+                <!-- Values -->
+                <div class="reveal fade-up delay-200 bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg border-t-4 border-blue-600 hover:shadow-xl transition-all duration-300 group">
+                    <div class="w-14 h-14 bg-blue-50 dark:bg-blue-900/20 rounded-full flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-colors">
+                        <i data-lucide="diamond" class="w-7 h-7 text-blue-600 group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">قيمنا</h3>
+                    <ul class="space-y-3 text-gray-600 dark:text-gray-300">
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check" class="w-5 h-5 text-blue-500 mt-1 shrink-0"></i>
+                            <span><strong>الدقة:</strong> التزام مطلق بالمعايير الهندسية.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check" class="w-5 h-5 text-blue-500 mt-1 shrink-0"></i>
+                            <span><strong>الانتشار:</strong> تقديم الخدمات في جميع ولايات السودان.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check" class="w-5 h-5 text-blue-500 mt-1 shrink-0"></i>
+                            <span><strong>الموثوقية:</strong> نتائج يمكن الاعتماد عليها.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check" class="w-5 h-5 text-blue-500 mt-1 shrink-0"></i>
+                            <span><strong>الشراكة:</strong> العمل يداً بيد مع العميل.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Strategic Goals -->
+                <div class="reveal fade-up delay-300 bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg border-t-4 border-blue-600 hover:shadow-xl transition-all duration-300 group">
+                    <div class="w-14 h-14 bg-blue-50 dark:bg-blue-900/20 rounded-full flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-colors">
+                        <i data-lucide="trending-up" class="w-7 h-7 text-blue-600 group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">الأهداف الاستراتيجية</h3>
+                    <ul class="space-y-3 text-gray-600 dark:text-gray-300">
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="target" class="w-5 h-5 text-blue-500 mt-1 shrink-0"></i>
+                            <span><strong>الريادة التقنية:</strong> قيادة الابتكار وتبني أحدث التقنيات.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="target" class="w-5 h-5 text-blue-500 mt-1 shrink-0"></i>
+                            <span><strong>الأداء الفائق:</strong> تحقيق أعلى مستويات الكفاءة والجودة.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="target" class="w-5 h-5 text-blue-500 mt-1 shrink-0"></i>
+                            <span><strong>تطوير الكفاءات:</strong> رفع مهارات الكوادر الهندسية.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white dark:bg-gray-950">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 reveal fade-up">
+                <span class="text-blue-600 font-bold uppercase tracking-wider">خدماتنا</span>
+                <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mt-2 mb-4">ماذا نقدم</h2>
+                <div class="w-24 h-1 bg-blue-600 mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Service 1 -->
+                <div class="reveal fade-up delay-100 p-8 bg-gray-50 dark:bg-gray-800 rounded-xl hover:bg-blue-50 dark:hover:bg-gray-700 transition-colors border border-gray-100 dark:border-gray-700 hover:border-blue-100 text-center group">
+                    <div class="w-16 h-16 bg-white dark:bg-gray-700 rounded-full shadow-md flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="map-pin" class="w-8 h-8 text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">المسح الأرضي</h3>
+                    <p class="text-gray-600 dark:text-gray-300">استخدام أحدث أجهزة Total Station و GPS لدقة عالية.</p>
+                </div>
+                <!-- Service 2 -->
+                <div class="reveal fade-up delay-200 p-8 bg-gray-50 dark:bg-gray-800 rounded-xl hover:bg-blue-50 dark:hover:bg-gray-700 transition-colors border border-gray-100 dark:border-gray-700 hover:border-blue-100 text-center group">
+                    <div class="w-16 h-16 bg-white dark:bg-gray-700 rounded-full shadow-md flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="globe" class="w-8 h-8 text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">نظم GIS</h3>
+                    <p class="text-gray-600 dark:text-gray-300">بناء قواعد بيانات جغرافية وتحليل مكاني متقدم.</p>
+                </div>
+                <!-- Service 3 -->
+                <div class="reveal fade-up delay-300 p-8 bg-gray-50 dark:bg-gray-800 rounded-xl hover:bg-blue-50 dark:hover:bg-gray-700 transition-colors border border-gray-100 dark:border-gray-700 hover:border-blue-100 text-center group">
+                    <div class="w-16 h-16 bg-white dark:bg-gray-700 rounded-full shadow-md flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="satellite" class="w-8 h-8 text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">الاستشعار عن بعد</h3>
+                    <p class="text-gray-600 dark:text-gray-300">تحليل صور الأقمار الصناعية والمسح الجوي.</p>
+                </div>
+                <!-- Service 4 -->
+                <div class="reveal fade-up delay-400 p-8 bg-gray-50 dark:bg-gray-800 rounded-xl hover:bg-blue-50 dark:hover:bg-gray-700 transition-colors border border-gray-100 dark:border-gray-700 hover:border-blue-100 text-center group">
+                    <div class="w-16 h-16 bg-white dark:bg-gray-700 rounded-full shadow-md flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="hard-hat" class="w-8 h-8 text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">الاستشارات الهندسية</h3>
+                    <p class="text-gray-600 dark:text-gray-300">دعم فني واستشاري لمشاريع البنية التحتية.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-white dark:bg-gray-950">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 reveal fade-up">
+                <span class="text-blue-600 font-bold uppercase tracking-wider">أعمالنا</span>
+                <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mt-2 mb-4">مشاريع مميزة</h2>
+                <div class="w-24 h-1 bg-blue-600 mx-auto rounded-full"></div>
+                <p class="text-gray-600 dark:text-gray-300 mt-6 max-w-2xl mx-auto text-lg">
+                    نماذج من مشاريعنا الناجحة في مجالات المساحة، نظم المعلومات الجغرافية، والتخطيط العمراني.
+                </p>
+            </div>
+
+            <!-- Projects Grid Container (Populated by JS) -->
+            <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Projects will be inserted here by script.js -->
+            </div>
+
+            <div class="text-center mt-12 reveal fade-up">
+                <a href="projects.html" class="inline-block px-8 py-3 border-2 border-blue-600 text-blue-600 rounded-full font-bold hover:bg-blue-600 hover:text-white transition-all duration-300">
+                    عرض جميع المشاريع
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-blue-900 text-white relative overflow-hidden">
+        <!-- Decorative Elements -->
+        <div class="absolute top-0 left-0 w-64 h-64 bg-blue-500/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl translate-x-1/3 translate-y-1/3"></div>
+
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mb-16 reveal fade-up">
+                <span class="text-blue-300 font-bold uppercase tracking-wider">شهادات</span>
+                <h2 class="text-3xl md:text-5xl font-bold mt-2 mb-4">ماذا يقول عملاؤنا</h2>
+                <div class="w-24 h-1 bg-blue-400 mx-auto rounded-full"></div>
+            </div>
+
+            <!-- Testimonials Grid (Populated by JS) -->
+            <div id="testimonials-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonials will be inserted here by script.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-50 dark:bg-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 reveal fade-up">
+                <span class="text-blue-600 font-bold uppercase tracking-wider">تواصل معنا</span>
+                <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mt-2 mb-4">نحن هنا لخدمتك</h2>
+                <div class="w-24 h-1 bg-blue-600 mx-auto rounded-full"></div>
+                <p class="text-gray-600 dark:text-gray-300 mt-6 max-w-2xl mx-auto text-lg">
+                    هل لديك استفسار أو ترغب في بدء مشروع جديد؟ لا تتردد في التواصل معنا.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                <!-- Contact Info -->
+                <div class="reveal fade-right space-y-8">
+                    <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700">
+                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">معلومات الاتصال</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-blue-50 dark:bg-blue-900/20 rounded-full flex items-center justify-center shrink-0">
+                                    <i data-lucide="map-pin" class="w-6 h-6 text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 dark:text-white mb-1">العنوان</h4>
+                                    <p class="text-gray-600 dark:text-gray-300">الخرطوم، السودان</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-blue-50 dark:bg-blue-900/20 rounded-full flex items-center justify-center shrink-0">
+                                    <i data-lucide="phone" class="w-6 h-6 text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 dark:text-white mb-1">الهاتف</h4>
+                                    <p class="text-gray-600 dark:text-gray-300" dir="ltr">00249122477299</p>
+                                    <p class="text-gray-600 dark:text-gray-300" dir="ltr">00249922719000</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-blue-50 dark:bg-blue-900/20 rounded-full flex items-center justify-center shrink-0">
+                                    <i data-lucide="mail" class="w-6 h-6 text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 dark:text-white mb-1">البريد الإلكتروني</h4>
+                                    <p class="text-gray-600 dark:text-gray-300">xtremecapabilities@gmail.com</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 pt-8 border-t border-gray-100 dark:border-gray-700">
+                            <h4 class="font-bold text-gray-900 dark:text-white mb-4">تابعنا على</h4>
+                            <div class="flex gap-4">
+                                <a href="#" class="w-10 h-10 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all">
+                                    <i data-lucide="facebook" class="w-5 h-5"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center hover:bg-blue-400 hover:text-white transition-all">
+                                    <i data-lucide="twitter" class="w-5 h-5"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center hover:bg-blue-700 hover:text-white transition-all">
+                                    <i data-lucide="linkedin" class="w-5 h-5"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="reveal fade-left bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700">
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">أرسل لنا رسالة</h3>
+                    <form id="contact-form" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">الاسم الكامل</label>
+                                <input type="text" id="name" required class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all" placeholder="أدخل اسمك">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">البريد الإلكتروني</label>
+                                <input type="email" id="email" required class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all" placeholder="example@domain.com">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="subject" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">الموضوع</label>
+                            <input type="text" id="subject" required class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all" placeholder="عنوان الرسالة">
+                        </div>
+
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">الرسالة</label>
+                            <textarea id="message" rows="5" required class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all resize-none" placeholder="اكتب رسالتك هنا..."></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-blue-600 text-white font-bold py-4 rounded-lg hover:bg-blue-700 transition-all transform hover:-translate-y-1 shadow-lg hover:shadow-blue-500/30 flex items-center justify-center gap-2">
+                            <span>إرسال الرسالة</span>
+                            <i data-lucide="send" class="w-5 h-5"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-5 left-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300">
+        <div class="bg-white border-r-4 border-green-500 shadow-xl rounded-lg p-4 flex items-center gap-3 min-w-[300px]">
+            <div class="bg-green-100 p-2 rounded-full text-green-600">
+                <i data-lucide="check" class="w-5 h-5"></i>
+            </div>
+            <div>
+                <h4 class="font-bold text-gray-900 text-sm">تم الإرسال بنجاح</h4>
+                <p class="text-gray-600 text-xs mt-1">شكراً لتواصلك معنا، سنرد عليك قريباً.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="main-footer" class="bg-gray-900 text-white pt-20 pb-10">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <!-- Company Info -->
+                <div>
+                    <div class="flex items-center gap-2 font-bold text-2xl mb-6">
+                        <span>Xtreme Capabilities</span>
+                    </div>
+                    <p class="text-gray-400 leading-relaxed mb-6">
+                        شريكك الموثوق لحلول المساحة ونظم المعلومات الجغرافية في السودان. دقة، احترافية، وتكنولوجيا متقدمة.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="https://www.facebook.com/share/17ptzoYyz5/" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors">
+                            <i data-lucide="facebook" class="w-5 h-5"></i>
+                        </a>
+                        <a href="https://x.com/XCapabilities?t=4H-Mz2hVcWTWhCo-mgmi4Q&s=09" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-400 transition-colors">
+                            <i data-lucide="twitter" class="w-5 h-5"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/company/xcapabilities/?viewAsMember=true" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors">
+                            <i data-lucide="linkedin" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-pink-600 transition-colors">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-xl font-bold mb-6 border-b border-gray-800 pb-2 inline-block">روابط سريعة</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#hero" class="text-gray-400 hover:text-blue-500 transition-colors">الرئيسية</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-blue-500 transition-colors">عن الشركة</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-blue-500 transition-colors">خدماتنا</a></li>
+                        <li><a href="#projects" class="text-gray-400 hover:text-blue-500 transition-colors">المشاريع</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-blue-500 transition-colors">تواصل معنا</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services -->
+                <div>
+                    <h3 class="text-xl font-bold mb-6 border-b border-gray-800 pb-2 inline-block">خدماتنا</h3>
+                    <ul class="space-y-3">
+                        <li class="text-gray-400">المسح الطبوغرافي</li>
+                        <li class="text-gray-400">نظم المعلومات الجغرافية (GIS)</li>
+                        <li class="text-gray-400">الاستشعار عن بعد</li>
+                        <li class="text-gray-400">تخطيط المدن والبنية التحتية</li>
+                        <li class="text-gray-400">المسح الجوي (Drones)</li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-xl font-bold mb-6 border-b border-gray-800 pb-2 inline-block">معلومات التواصل</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="map-pin" class="w-5 h-5 text-blue-500 mt-1 shrink-0"></i>
+                            <span class="text-gray-400">الخرطوم،  السودان</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="phone" class="w-5 h-5 text-blue-500 shrink-0"></i>
+                            <span class="text-gray-400">00249122477299</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="mail" class="w-5 h-5 text-blue-500 shrink-0"></i>
+                            <span class="text-gray-400">xtremecapabilities@gmail.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm">
+                <p>&copy; <span id="year"></span> Xtreme Capabilities. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Project Detail Modal -->
+    <div id="project-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80 backdrop-blur-sm opacity-0 transition-opacity duration-300">
+        <div class="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden max-w-4xl w-full max-h-[90vh] flex flex-col shadow-2xl transform scale-90 transition-transform duration-300" id="modal-content">
+            <!-- Image Header -->
+            <div class="relative h-64 md:h-96 shrink-0">
+                <img id="modal-image" src="" alt="" class="w-full h-full object-cover">
+                <button id="close-modal" class="absolute top-4 left-4 p-2 bg-black/50 hover:bg-black/70 text-white rounded-full transition-colors">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                    <span id="modal-category" class="inline-block px-3 py-1 bg-blue-600 text-white text-xs font-bold rounded-full mb-2"></span>
+                    <h2 id="modal-title" class="text-3xl font-bold text-white"></h2>
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="p-6 md:p-8 overflow-y-auto">
+                <div class="flex justify-between items-center mb-6 border-b border-gray-100 dark:border-gray-700 pb-4">
+                    <div class="flex gap-4">
+                        <button id="favorite-btn" class="flex items-center gap-2 px-4 py-2 rounded-lg transition-colors bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600">
+                            <i data-lucide="heart" class="w-5 h-5"></i>
+                            <span id="favorite-text">إضافة للمفضلة</span>
+                        </button>
+                        <button class="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+                            <i data-lucide="share-2" class="w-5 h-5"></i>
+                            <span>مشاركة</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="prose max-w-none text-gray-700 dark:text-gray-300 leading-relaxed text-lg">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">تفاصيل المشروع</h3>
+                    <p id="modal-description"></p>
+                    
+                    <div class="mt-8 p-6 bg-blue-50 dark:bg-blue-900/20 rounded-xl border border-blue-100 dark:border-blue-900/30">
+                        <h4 class="font-bold text-blue-900 dark:text-blue-300 mb-2">أبرز التقنيات المستخدمة:</h4>
+                        <ul class="list-disc list-inside text-blue-800 dark:text-blue-400 space-y-1">
+                            <li>أجهزة Total Station عالية الدقة</li>
+                            <li>نظم المعلومات الجغرافية (ArcGIS / QGIS)</li>
+                            <li>معالجة البيانات المكانية وتحليلها</li>
+                            <li>إخراج الخرائط الرقمية والورقية</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>

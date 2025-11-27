@@ -1,0 +1,57 @@
+/* Custom Font */
+.font-cairo {
+    font-family: 'Cairo', sans-serif;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #f49119;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #d67e12;
+}
+
+/* Animation Classes */
+.reveal {
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade-up {
+    transform: translateY(50px);
+}
+
+.fade-right {
+    transform: translateX(50px);
+}
+
+.fade-left {
+    transform: translateX(-50px);
+}
+
+/* Delays */
+.delay-100 { transition-delay: 0.1s; }
+.delay-200 { transition-delay: 0.2s; }
+.delay-300 { transition-delay: 0.3s; }
+.delay-400 { transition-delay: 0.4s; }
+.delay-600 { transition-delay: 0.6s; }
+
+/* Smooth Scroll */
+html {
+    scroll-behavior: smooth;
+}
