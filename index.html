@@ -53,6 +53,9 @@
     
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- HugeIcons -->
+    <link rel="stylesheet" href="https://cdn.hugeicons.com/font/hgi-stroke-rounded.css">
 </head>
 <body class="font-cairo text-gray-900 dark:text-white bg-white dark:bg-gray-950 overflow-x-hidden transition-colors duration-300">
 
@@ -77,10 +80,18 @@
                 <button id="theme-toggle" class="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-yellow-400 transition-colors hover:bg-gray-200 dark:hover:bg-gray-700">
                     <i data-lucide="moon" class="w-5 h-5"></i>
                 </button>
+                
+                <!-- WhatsApp Button -->
+                <a href="https://wa.me/249122477299" target="_blank" class="p-2 rounded-full bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 transition-colors hover:bg-green-200 dark:hover:bg-green-900/50" title="تواصل عبر واتساب">
+                    <i class="hgi-stroke hgi-whatsapp text-xl"></i>
+                </a>
             </nav>
 
             <!-- Mobile Menu Button -->
             <div class="flex items-center gap-4 md:hidden">
+                <a href="https://wa.me/249122477299" target="_blank" class="p-2 rounded-full bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 transition-colors">
+                    <i class="hgi-stroke hgi-whatsapp text-xl"></i>
+                </a>
                 <button id="theme-toggle-mobile" class="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-yellow-400 transition-colors">
                     <i data-lucide="moon" class="w-5 h-5"></i>
                 </button>
@@ -134,9 +145,94 @@
         </div>
 
         <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 animate-bounce">
-            <a href="#about" class="text-white/70 hover:text-white transition-colors">
+            <a href="#welcome" class="text-white/70 hover:text-white transition-colors">
                 <i data-lucide="arrow-down" class="w-8 h-8"></i>
             </a>
+        </div>
+    </section>
+
+    <!-- Welcome Message Section -->
+    <section id="welcome" class="py-16 bg-white dark:bg-gray-950 border-b border-gray-100 dark:border-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row gap-12">
+                
+                <!-- Arabic Message (RTL) -->
+                <div class="lg:w-1/2 reveal fade-right">
+                    <div class="bg-blue-50 dark:bg-blue-900/10 p-8 rounded-2xl border border-blue-100 dark:border-blue-900/30 h-full">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white">
+                                <i data-lucide="quote" class="w-6 h-6 transform scale-x-[-1]"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-900 dark:text-white">كلمة المدير العام</h3>
+                                <p class="text-sm text-blue-600 dark:text-blue-400">رسالة ترحيبية</p>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-4 text-gray-700 dark:text-gray-300 text-sm leading-relaxed text-justify">
+                            <p class="font-bold text-lg text-blue-900 dark:text-blue-300">أهلاً وسهلاً بكم !</p>
+                            <p>
+                                نتشرف في Xtreme Capabilities بكوننا في طليعة الشركات التي تقدم حلولاً متطورة ومبتكرة في مجال هندسة المساحة و نظم المعلومات الجغرافية.
+                            </p>
+                            <p>
+                                رسالتنا بسيطة: نسعى لتمكين عملائنا من تحقيق "القدرة القصوى" (Xtreme Capabilities) لأعمالهم. نحن نؤمن بأن كل مؤسسة تمتلك إمكانات هائلة غير مستغلة، وفريقنا المتخصص يعمل بشغف لتقديم الاستراتيجيات والأدوات والخبرات اللازمة لتحويل هذه الإمكانات إلى نتائج ملموسة ونجاح مستدام.
+                            </p>
+                            <p>
+                                لقد بنينا سمعتنا على أساس التميز، النزاهة، والالتزام المطلق بتحقيق أعلى مستويات الجودة لشركائنا.
+                                إن Xtreme Capabilities هي شريككم الموثوق لتحويل رؤيتكم إلى واقع.
+                            </p>
+                            <p>
+                                ندعوكم لاستكشاف ملفنا التعريفي للتعرف بشكل أعمق على خدماتنا وقصص نجاحنا. نتطلع إلى بدء رحلة الشراكة معكم وتحقيق أقصى قدراتكم معاً.
+                            </p>
+                        </div>
+
+                        <div class="mt-8 pt-6 border-t border-blue-200 dark:border-blue-800/30">
+                            <p class="font-bold text-gray-900 dark:text-white">مع خالص التقدير،</p>
+                            <p class="text-blue-600 dark:text-blue-400 font-bold text-lg mt-1">المجتبى شوقي مصطفى</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">المدير العام - Xtreme Capabilities</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- English Message (LTR) -->
+                <div class="lg:w-1/2 reveal fade-left" dir="ltr">
+                    <div class="bg-gray-50 dark:bg-gray-900 p-8 rounded-2xl border border-gray-100 dark:border-gray-800 h-full text-left">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-12 h-12 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-300">
+                                <i data-lucide="quote" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-900 dark:text-white">General Manager's Word</h3>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Welcome Message</p>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-4 text-gray-700 dark:text-gray-300 text-sm leading-relaxed text-justify font-sans">
+                            <p class="font-bold text-lg text-blue-900 dark:text-blue-300">Welcome!</p>
+                            <p>
+                                At Xtreme Capabilities, we are honored to be at the forefront of companies providing advanced and innovative solutions in the field of Surveying Engineering and Geographic Information Systems (GIS).
+                            </p>
+                            <p>
+                                Our mission is simple: We strive to empower our clients to achieve "Xtreme Capabilities" for their businesses. We believe that every organization possesses immense untapped potential, and our specialized team works passionately to provide the strategies, tools, and expertise needed to transform this potential into tangible results and sustainable success.
+                            </p>
+                            <p>
+                                We have built our reputation on excellence, integrity, and an absolute commitment to delivering the highest quality standards to our partners.
+                                Xtreme Capabilities is your trusted partner in turning your vision into reality.
+                            </p>
+                            <p>
+                                We invite you to explore our profile to learn more about our services and success stories. We look forward to starting a partnership journey with you and achieving your maximum capabilities together.
+                            </p>
+                        </div>
+
+                        <div class="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
+                            <p class="font-bold text-gray-900 dark:text-white">Sincerely,</p>
+                            <p class="text-blue-600 dark:text-blue-400 font-bold text-lg mt-1">Almujtaba Shawgi Mustafa Ibrahim</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">General Manager - Xtreme Capabilities</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </section>
 
@@ -268,6 +364,89 @@
                             <span><strong>تطوير الكفاءات:</strong> رفع مهارات الكوادر الهندسية.</span>
                         </li>
                     </ul>
+                </div>
+            </div>
+
+            <!-- Team Section -->
+            <div class="mt-24">
+                <div class="text-center mb-12 reveal fade-up">
+                    <span class="text-blue-600 font-bold uppercase tracking-wider">فريقنا</span>
+                    <h2 class="text-3xl font-bold text-gray-900 dark:text-white mt-2">نخبة من الخبراء</h2>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Team Member 1 -->
+                    <div class="reveal fade-up delay-100 bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group border border-gray-100 dark:border-gray-700">
+                        <div class="h-64 bg-gray-200 dark:bg-gray-700 flex items-center justify-center relative overflow-hidden">
+                            <i data-lucide="user" class="w-20 h-20 text-gray-400 dark:text-gray-500"></i>
+                            <!-- Placeholder for Image -->
+                            <div class="absolute inset-0 bg-blue-600/0 group-hover:bg-blue-600/10 transition-colors duration-300"></div>
+                        </div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-1">Almujtaba Shawgi</h3>
+                            <p class="text-blue-600 dark:text-blue-400 font-medium text-sm">General Manager</p>
+                        </div>
+                    </div>
+
+                    <!-- Team Member 2 -->
+                    <div class="reveal fade-up delay-200 bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group border border-gray-100 dark:border-gray-700">
+                        <div class="h-64 bg-gray-200 dark:bg-gray-700 flex items-center justify-center relative overflow-hidden">
+                            <i data-lucide="user" class="w-20 h-20 text-gray-400 dark:text-gray-500"></i>
+                            <div class="absolute inset-0 bg-blue-600/0 group-hover:bg-blue-600/10 transition-colors duration-300"></div>
+                        </div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-1">Ahmed Mahadi</h3>
+                            <p class="text-blue-600 dark:text-blue-400 font-medium text-sm">Team Member</p>
+                        </div>
+                    </div>
+
+                    <!-- Team Member 3 -->
+                    <div class="reveal fade-up delay-300 bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group border border-gray-100 dark:border-gray-700">
+                        <div class="h-64 bg-gray-200 dark:bg-gray-700 flex items-center justify-center relative overflow-hidden">
+                            <i data-lucide="user" class="w-20 h-20 text-gray-400 dark:text-gray-500"></i>
+                            <div class="absolute inset-0 bg-blue-600/0 group-hover:bg-blue-600/10 transition-colors duration-300"></div>
+                        </div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-1">Ayman Abdallah</h3>
+                            <p class="text-blue-600 dark:text-blue-400 font-medium text-sm">Team Member</p>
+                        </div>
+                    </div>
+
+                    <!-- Team Member 4 -->
+                    <div class="reveal fade-up delay-400 bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group border border-gray-100 dark:border-gray-700">
+                        <div class="h-64 bg-gray-200 dark:bg-gray-700 flex items-center justify-center relative overflow-hidden">
+                            <i data-lucide="user" class="w-20 h-20 text-gray-400 dark:text-gray-500"></i>
+                            <div class="absolute inset-0 bg-blue-600/0 group-hover:bg-blue-600/10 transition-colors duration-300"></div>
+                        </div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-1">Sara Omer</h3>
+                            <p class="text-blue-600 dark:text-blue-400 font-medium text-sm">Team Member</p>
+                        </div>
+                    </div>
+
+                    <!-- Team Member 5 -->
+                    <div class="reveal fade-up delay-500 bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group border border-gray-100 dark:border-gray-700">
+                        <div class="h-64 bg-gray-200 dark:bg-gray-700 flex items-center justify-center relative overflow-hidden">
+                            <i data-lucide="user" class="w-20 h-20 text-gray-400 dark:text-gray-500"></i>
+                            <div class="absolute inset-0 bg-blue-600/0 group-hover:bg-blue-600/10 transition-colors duration-300"></div>
+                        </div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-1">Taha Mamoun</h3>
+                            <p class="text-blue-600 dark:text-blue-400 font-medium text-sm">Team Member</p>
+                        </div>
+                    </div>
+
+                    <!-- Team Member 6 -->
+                    <div class="reveal fade-up delay-600 bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group border border-gray-100 dark:border-gray-700">
+                        <div class="h-64 bg-gray-200 dark:bg-gray-700 flex items-center justify-center relative overflow-hidden">
+                            <i data-lucide="user" class="w-20 h-20 text-gray-400 dark:text-gray-500"></i>
+                            <div class="absolute inset-0 bg-blue-600/0 group-hover:bg-blue-600/10 transition-colors duration-300"></div>
+                        </div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-1">Ahmed Yousif</h3>
+                            <p class="text-blue-600 dark:text-blue-400 font-medium text-sm">Team Member</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -518,6 +697,7 @@
                         <li><a href="#services" class="text-gray-400 hover:text-blue-500 transition-colors">خدماتنا</a></li>
                         <li><a href="#projects" class="text-gray-400 hover:text-blue-500 transition-colors">المشاريع</a></li>
                         <li><a href="#contact" class="text-gray-400 hover:text-blue-500 transition-colors">تواصل معنا</a></li>
+                        <li><a href="messages.html" class="text-gray-400 hover:text-blue-500 transition-colors hidden" id="footer-messages-link">الرسائل الواردة</a></li>
                     </ul>
                 </div>
 

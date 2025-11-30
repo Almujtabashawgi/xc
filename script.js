@@ -1,3 +1,166 @@
+// Auth Logic
+const ADMIN_EMAIL = 'almujtabashawgi@gmail.com';
+const ADMIN_PASS = '12345';
+
+// Check Auth State on Load
+function checkAuth() {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    const navs = document.querySelectorAll('nav');
+    const mobileMenus = document.querySelectorAll('#mobile-menu .flex-col');
+
+    // Update Nav Links
+    navs.forEach(nav => {
+        // Remove existing auth links to prevent duplicates
+        const existingAuthLink = nav.querySelector('.auth-link');
+        if (existingAuthLink) existingAuthLink.remove();
+
+        if (currentUser) {
+            const logoutLink = document.createElement('a');
+            logoutLink.href = '#';
+            logoutLink.className = 'auth-link nav-link text-red-600 hover:text-red-700 font-medium transition-colors relative group';
+            logoutLink.textContent = 'تسجيل خروج';
+            logoutLink.onclick = (e) => {
+                e.preventDefault();
+                logout();
+            };
+            nav.appendChild(logoutLink);
+
+            // If Admin, add Messages link if not present
+            if (currentUser.role === 'admin') {
+                const footerLink = document.getElementById('footer-messages-link');
+                if (footerLink) footerLink.classList.remove('hidden');
+            }
+        } else {
+            const loginLink = document.createElement('a');
+            loginLink.href = 'login.html';
+            loginLink.className = 'auth-link nav-link text-blue-600 hover:text-blue-700 font-medium transition-colors relative group';
+            loginLink.textContent = 'تسجيل الدخول';
+            nav.appendChild(loginLink);
+        }
+    });
+
+    // Update Mobile Menu
+    mobileMenus.forEach(menu => {
+        const existingAuthLink = menu.querySelector('.auth-link-mobile');
+        if (existingAuthLink) existingAuthLink.remove();
+
+        if (currentUser) {
+            const logoutLink = document.createElement('a');
+            logoutLink.href = '#';
+            logoutLink.className = 'auth-link-mobile mobile-link text-red-600 font-medium p-2 border-b border-gray-100 dark:border-gray-800';
+            logoutLink.textContent = 'تسجيل خروج';
+            logoutLink.onclick = (e) => {
+                e.preventDefault();
+                logout();
+            };
+            menu.appendChild(logoutLink);
+        } else {
+            const loginLink = document.createElement('a');
+            loginLink.href = 'login.html';
+            loginLink.className = 'auth-link-mobile mobile-link text-blue-600 font-medium p-2 border-b border-gray-100 dark:border-gray-800';
+            loginLink.textContent = 'تسجيل الدخول';
+            menu.appendChild(loginLink);
+        }
+    });
+
+    // Protect Admin Pages
+    if (window.location.pathname.includes('messages.html')) {
+        if (!currentUser || currentUser.role !== 'admin') {
+            window.location.href = 'login.html';
+        }
+    }
+}
+
+function logout() {
+    localStorage.removeItem('currentUser');
+    window.location.href = 'index.html';
+}
+
+// Run check on load
+checkAuth();
+
+// Login Page Logic
+const loginForm = document.getElementById('login-form');
+const registerForm = document.getElementById('register-form');
+const tabLogin = document.getElementById('tab-login');
+const tabRegister = document.getElementById('tab-register');
+
+if (loginForm && registerForm) {
+    // Tab Switching
+    tabLogin.addEventListener('click', () => {
+        loginForm.classList.remove('hidden');
+        registerForm.classList.add('hidden');
+        tabLogin.classList.add('text-blue-600', 'border-b-2', 'border-blue-600');
+        tabLogin.classList.remove('text-gray-500', 'dark:text-gray-400');
+        tabRegister.classList.remove('text-blue-600', 'border-b-2', 'border-blue-600');
+        tabRegister.classList.add('text-gray-500', 'dark:text-gray-400');
+    });
+
+    tabRegister.addEventListener('click', () => {
+        registerForm.classList.remove('hidden');
+        loginForm.classList.add('hidden');
+        tabRegister.classList.add('text-blue-600', 'border-b-2', 'border-blue-600');
+        tabRegister.classList.remove('text-gray-500', 'dark:text-gray-400');
+        tabLogin.classList.remove('text-blue-600', 'border-b-2', 'border-blue-600');
+        tabLogin.classList.add('text-gray-500', 'dark:text-gray-400');
+    });
+
+    // Login Submit
+    loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = document.getElementById('login-email').value;
+        const password = document.getElementById('login-password').value;
+        const errorMsg = document.getElementById('login-error');
+
+        // Admin Check
+        if (email === ADMIN_EMAIL && password === ADMIN_PASS) {
+            const user = { name: 'Admin', email: email, role: 'admin' };
+            localStorage.setItem('currentUser', JSON.stringify(user));
+            window.location.href = 'messages.html';
+            return;
+        }
+
+        // Customer Check
+        const users = JSON.parse(localStorage.getItem('users') || '[]');
+        const user = users.find(u => u.email === email && u.password === password);
+
+        if (user) {
+            const currentUser = { name: user.name, email: user.email, role: 'customer' };
+            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+            window.location.href = 'index.html';
+        } else {
+            errorMsg.classList.remove('hidden');
+        }
+    });
+
+    // Register Submit
+    registerForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('register-name').value;
+        const email = document.getElementById('register-email').value;
+        const password = document.getElementById('register-password').value;
+        const errorMsg = document.getElementById('register-error');
+
+        const users = JSON.parse(localStorage.getItem('users') || '[]');
+        
+        if (users.find(u => u.email === email)) {
+            errorMsg.classList.remove('hidden');
+            return;
+        }
+
+        const newUser = { name, email, password }; // In real app, never store plain password!
+        users.push(newUser);
+        localStorage.setItem('users', JSON.stringify(users));
+
+        // Auto login
+        const currentUser = { name: newUser.name, email: newUser.email, role: 'customer' };
+        localStorage.setItem('currentUser', JSON.stringify(currentUser));
+        
+        alert('تم إنشاء الحساب بنجاح!');
+        window.location.href = 'index.html';
+    });
+}
+
 // Data
 const projects = [
     {

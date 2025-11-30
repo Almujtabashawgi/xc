@@ -55,3 +55,212 @@
 html {
     scroll-behavior: smooth;
 }
+
+/* ===========================
+   RESPONSIVE UTILITIES
+   =========================== */
+
+/* Image Responsive Rules */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Container Max Width for Large Screens */
+.container {
+    max-width: 100%;
+    width: 100%;
+}
+
+@media (min-width: 640px) {
+    .container {
+        max-width: 640px;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 768px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        max-width: 1024px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .container {
+        max-width: 1280px;
+    }
+}
+
+@media (min-width: 1536px) {
+    .container {
+        max-width: 1536px;
+    }
+}
+
+/* Touch Target Minimum Size (44x44px for accessibility) */
+button,
+a,
+input[type="checkbox"],
+input[type="radio"],
+select {
+    min-height: 44px;
+    min-width: 44px;
+}
+
+/* Form Elements Touch Friendly */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+textarea,
+select {
+    font-size: 16px; /* Prevents zoom on iOS */
+    min-height: 44px;
+}
+
+/* Mobile Spacing Utilities */
+@media (max-width: 767px) {
+    /* Reduce hero text on mobile */
+    #hero h1 {
+        font-size: 2rem !important;
+        line-height: 1.2;
+    }
+    
+    #hero h1 span:last-child {
+        font-size: 1.5rem !important;
+    }
+    
+    #hero p {
+        font-size: 1rem !important;
+    }
+    
+    /* Adjust section padding on mobile */
+    section {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+    
+    /* Stack buttons vertically on small mobile */
+    #hero .flex {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    #hero a {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Tablet Adjustments */
+@media (min-width: 768px) and (max-width: 1023px) {
+    /* Optimize grid layouts for tablet */
+    .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-3 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* Large Desktop Adjustments */
+@media (min-width: 1536px) {
+    /* Limit max container width on very large screens */
+    .container {
+        max-width: 1400px;
+    }
+}
+
+/* Responsive Table (if needed) */
+@media (max-width: 767px) {
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
+
+/* Improve mobile menu visibility */
+@media (max-width: 767px) {
+    #mobile-menu {
+        max-height: 0;
+        transition: max-height 0.3s ease-in-out;
+    }
+    
+    #mobile-menu:not(.hidden) {
+        max-height: 500px;
+    }
+}
+
+/* Fix for modal on mobile */
+@media (max-width: 767px) {
+    #project-modal .max-w-4xl {
+        max-width: 95vw;
+    }
+    
+    #modal-content {
+        max-height: 95vh;
+    }
+}
+
+/* Responsive Font Scaling */
+@media (max-width: 639px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+    html {
+        font-size: 15px;
+    }
+}
+
+@media (min-width: 1024px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+/* Prevent horizontal overflow */
+body {
+    overflow-x: hidden;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* Responsive Images in Cards */
+.project-card img,
+.team-member img,
+article img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Fix aspect ratios for hero images */
+#hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Logo responsive sizing */
+header img[alt*="logo"],
+header img[alt*="Logo"] {
+    max-height: 48px;
+    width: auto;
+}
+
+@media (max-width: 639px) {
+    header img[alt*="logo"],
+    header img[alt*="Logo"] {
+        max-height: 40px;
+    }
+}
