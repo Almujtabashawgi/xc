@@ -9,6 +9,33 @@
     "skip": "Skip to content",
     "nav.services": "Services", "nav.sectors": "Sectors",
     "nav.process": "How we work", "nav.about": "About", "nav.faq": "FAQ", "nav.contact": "Contact",
+    "nav.work": "Our work",
+    "work.title": "Our work",
+    "work.intro": "Projects we have delivered in River Nile, Khartoum, Red Sea and Northern states.",
+    "pj1.place": "Haya, Red Sea State", "pj1.t": "Masader Petroleum fuel depot",
+    "pj1.d": "Setting out fuel tank centres with a total station, and a grid levelling survey of the depot site.",
+    "pj1.alt": "Surveyor carrying a total station prism at the Haya fuel depot site",
+    "pj2.place": "Al-Hudi, Atbara River", "pj2.t": "Natba Petroleum tank site",
+    "pj2.d": "Survey works for the site: setting out the perimeter fence points and fixing the corners precisely.",
+    "pj2.alt": "Natba Petroleum tank site after the points were set out",
+    "pj3.place": "Al-Golid, Northern State", "pj3.t": "Partners of Success agricultural cooperative",
+    "pj3.d": "Planning and setting out a 1,500-feddan agricultural project.",
+    "pj3.alt": "Surveyor behind a total station on the agricultural project land",
+    "pj4.place": "Al-Qasr Street, Khartoum", "pj4.t": "Comboni College buildings",
+    "pj4.d": "Measured survey of the buildings and new as-built drawings.",
+    "pj4.alt": "Total station in front of one of the college buildings",
+    "pj5.place": "Atbara, River Nile State", "pj5.t": "Commercial Land Port complex",
+    "pj5.d": "Measured survey of three buildings and their as-built drawings.",
+    "pj5.alt": "Survey team inside one of the complex buildings",
+    "pj6.place": "University of Khartoum", "pj6.t": "Practical training for surveying engineering students",
+    "pj6.d": "A course on processing field data and producing office outputs, with the Geomatics Engineering Students Society (GESS), for second- and third-year students.",
+    "pj6.alt": "Surveying engineering students in a training session at the University of Khartoum",
+    "more.title": "Other work",
+    "mw1.t": "Construction setting out", "mw1.d": "Column footings and offsets, steel sheds and pile centres, in Atbara, Ad-Damer, Berber and Al-Udayra.",
+    "mw2.t": "Excavation and levels", "mw2.d": "Excavation limits and levels for basements and ground slabs, in Ad-Damer, Atbara and Omdurman.",
+    "mw3.t": "Land planning", "mw3.d": "Designing, planning and setting out a land subdivision in Atbara, and a school boundary wall in Az-Zeidab.",
+    "mw4.t": "Grid levelling", "mw4.d": "A grid levelling survey of a 10,000 m² plot in Ad-Damer.",
+    "more.fb": "More of our work on Facebook",
     "profile.download": "Download our company profile (PDF, 2 MB)",
     "c.profile": "Company profile", "c.profile_link": "Download PDF (2 MB)",
     "faq.title": "Frequently asked questions",
@@ -48,7 +75,7 @@
     "sectors.title": "Sectors we serve",
     "sec1.t": "Agriculture and irrigation", "sec1.d": "Canal surveys and desilting quantities, irrigated-land and level analysis.",
     "sec2.t": "Reconstruction and infrastructure", "sec2.d": "Base maps, damage inventories and site surveys for roads, bridges and public buildings.",
-    "sec3.t": "Mining", "sec3.d": "Topographic surveys of mine sites, concession boundaries and satellite image analysis.",
+    "sec3.t": "Oil and mining", "sec3.d": "Surveying and setting out fuel depots and petroleum facilities, and topographic surveys of mine sites and concession boundaries.",
     "sec4.t": "NGOs and development", "sec4.d": "Needs mapping, coordinate-based field verification and project spatial databases.",
     "sec5.t": "Government", "sec5.d": "Planning maps and land and service information systems for localities and states.",
     "sec6.t": "Investors and individuals", "sec6.d": "Plot setting out and site surveys before design and construction.",
@@ -83,14 +110,20 @@
   };
 
   var nodes = document.querySelectorAll("[data-i18n]");
+  var altNodes = document.querySelectorAll("[data-i18n-alt]");
   var AR = {};
   nodes.forEach(function (n) { AR[n.getAttribute("data-i18n")] = n.innerHTML; });
+  altNodes.forEach(function (n) { AR[n.getAttribute("data-i18n-alt")] = n.getAttribute("alt"); });
 
   function setLang(lang) {
     var dict = lang === "en" ? EN : AR;
     nodes.forEach(function (n) {
       var k = n.getAttribute("data-i18n");
       if (dict[k] !== undefined) n.innerHTML = dict[k];
+    });
+    altNodes.forEach(function (n) {
+      var k = n.getAttribute("data-i18n-alt");
+      if (dict[k] !== undefined) n.setAttribute("alt", dict[k]);
     });
     document.documentElement.lang = lang;
     document.documentElement.dir = lang === "en" ? "ltr" : "rtl";
